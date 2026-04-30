@@ -1147,7 +1147,7 @@ export default {
     _tryLoadGolferGLB() {
       const loader = new GLTFLoader()
       loader.load(
-        '/golfer.glb',
+        `${import.meta.env.BASE_URL}golfer.glb`,
         (gltf) => {
           this.glbLoading = false
           const model = gltf.scene
