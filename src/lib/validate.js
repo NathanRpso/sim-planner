@@ -1,3 +1,5 @@
+const base = import.meta.env.BASE_URL
+
 function fmtM(cm) {
   const m = cm / 100
   if (cm >= 100) return `${m % 1 === 0 ? m : m.toFixed(2).replace(/\.?0+$/, '')}m`
@@ -164,31 +166,33 @@ export function runValidation(state) {
   const throwRatio     = screenW > 0 ? hitFromWall / screenW : 1.5
   const screenWIn      = Math.round(screenW / 2.54)
 
+  const i = (f) => `${base}icons/${f}`
+
   const fixingItem = ceilMat === 'concrete'
-    ? { name: 'Masonry Anchor Kit',      note: 'Required for concrete/block ceilings — not included in box',          image: '/icons/masonry-anchor.png' }
+    ? { name: 'Masonry Anchor Kit',         note: 'Required for concrete/block ceilings — not included in box',        image: i('masonry-anchor.png') }
     : ceilMat === 'wood'
-      ? { name: 'Timber Lag Screws',     note: 'Heavy-duty lag screws for exposed beam or timber ceilings',           image: '/icons/lag-screw.png' }
-      : { name: 'Drywall Anchors & Screws', note: 'Standard fixing kit for drywall/plasterboard ceilings',            image: '/icons/screw.png' }
+      ? { name: 'Timber Lag Screws',        note: 'Heavy-duty lag screws for exposed beam or timber ceilings',         image: i('lag-screw.png') }
+      : { name: 'Drywall Anchors & Screws', note: 'Standard fixing kit for drywall/plasterboard ceilings',             image: i('screw.png') }
 
   const components = {
     inBox: [
-      { name: 'CLM PRO Device',          note: 'Launch monitor, ceiling-mounted above the hitting position',          image: '/icons/clm-device.jpg' },
-      { name: 'Power Cable',             note: 'Ensure a power outlet is within reach of your ceiling mount point',   image: '/icons/power-cable.png' },
-      { name: 'Ceiling Mounting Bracket',note: 'Standard bracket — suitable for drywall and timber ceilings',         image: '/icons/ceiling-mount.png' },
+      { name: 'CLM PRO Device',           note: 'Launch monitor, ceiling-mounted above the hitting position',          image: i('clm-device.jpg') },
+      { name: 'Power Cable',              note: 'Ensure a power outlet is within reach of your ceiling mount point',   image: i('power-cable.png') },
+      { name: 'Ceiling Mounting Bracket', note: 'Standard bracket — suitable for drywall and timber ceilings',         image: i('ceiling-mount.png') },
     ],
     required: [
-      { name: 'Impact Screen',           note: 'Multi-layer screen rated for driver ball speeds',                     image: '/icons/impact-screen.webp' },
-      { name: 'Screen Frame',            note: 'Structural frame to tension and support the impact screen',           image: '/icons/screen-frame.png' },
+      { name: 'Impact Screen',            note: 'Multi-layer screen rated for driver ball speeds',                     image: i('impact-screen.webp') },
+      { name: 'Screen Frame',             note: 'Structural frame to tension and support the impact screen',           image: i('screen-frame.png') },
       fixingItem,
-      ...(needsDropMount ? [{ name: 'Ceiling Drop Mount', note: `Lowers CLM PRO to optimal sensing height — your ceiling is ${fmtM(roomH)}`, image: '/icons/drop-mount.png' }] : []),
+      ...(needsDropMount ? [{ name: 'Ceiling Drop Mount', note: `Lowers CLM PRO to optimal sensing height — your ceiling is ${fmtM(roomH)}`, image: i('drop-mount.png') }] : []),
     ],
     recommended: [
       ...(isProjector ? [
-        { name: 'Short-Throw Projector', note: `Throw ratio ≤ ${throwRatio.toFixed(2)}:1 · ≥3,000 lumens · 1080p+ · screen width ~${screenWIn}"`, image: '/icons/projector.png' },
-        { name: 'HDMI Cable',            note: 'High-speed, 4K-rated cable from PC to projector',                    image: '/icons/hdmi-cable.png' },
+        { name: 'Short-Throw Projector',  note: `Throw ratio ≤ ${throwRatio.toFixed(2)}:1 · ≥3,000 lumens · 1080p+ · screen width ~${screenWIn}"`, image: i('projector.png') },
+        { name: 'HDMI Cable',             note: 'High-speed, 4K-rated cable from PC to projector',                    image: i('hdmi-cable.png') },
       ] : []),
-      { name: 'Ethernet Cable',          note: 'Cat6 from router to hitting position for stable, low-latency connectivity', image: '/icons/ethernet-cable.png' },
-      { name: 'Windows PC',             note: 'Min: i5/Ryzen 5, 8GB RAM, Win 10 · Rec: i7+, 16GB RAM, dedicated GPU', image: '/icons/pc.png' },
+      { name: 'Ethernet Cable',           note: 'Cat6 from router to hitting position for stable, low-latency connectivity', image: i('ethernet-cable.png') },
+      { name: 'Windows PC',              note: 'Min: i5/Ryzen 5, 8GB RAM, Win 10 · Rec: i7+, 16GB RAM, dedicated GPU', image: i('pc.png') },
     ],
   }
 

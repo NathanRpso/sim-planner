@@ -1894,7 +1894,7 @@ export default {
     _makeDragIcon(parent, x, y, z) {
       const div = document.createElement('div')
       div.style.cssText = 'pointer-events:none;'
-      div.innerHTML = '<img src="/drag-icon.png" width="28" height="28" style="display:block;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.55)) invert(1);" />'
+      div.innerHTML = `<img src="${import.meta.env.BASE_URL}drag-icon.png" width="28" height="28" style="display:block;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.55)) invert(1);" />`
       const css2d = new CSS2DObject(div)
       css2d.visible = false
       const anchor = new THREE.Object3D()

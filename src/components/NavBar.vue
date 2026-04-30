@@ -4,7 +4,7 @@
     <div class="topbar">
       <div class="bar-inner">
         <a href="#" class="logo" aria-label="Rapsodo">
-          <img src="/logos/rapsodo-wordmark.svg" class="wordmark" alt="Rapsodo" />
+          <img :src="`${baseUrl}logos/rapsodo-wordmark.svg`" class="wordmark" alt="Rapsodo" />
         </a>
 
         <span class="wip-pill">Work in Progress</span>
@@ -79,6 +79,7 @@ export default {
   name: 'NavBar',
   data() {
     return {
+      baseUrl: import.meta.env.BASE_URL,
       topLinks: ['Golf', 'Baseball', 'Softball', 'Careers'],
       productsDropdown: [
         'All Products',

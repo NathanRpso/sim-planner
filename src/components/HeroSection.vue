@@ -1,5 +1,5 @@
 <template>
-  <section class="hero">
+  <section class="hero" :style="{ backgroundImage: `url(${baseUrl}golf-sim-hero.jpg)` }">
     <div class="hero-overlay" />
 
     <div class="hero-content">
@@ -37,6 +37,7 @@
 <script>
 export default {
   name: 'HeroSection',
+  data() { return { baseUrl: import.meta.env.BASE_URL } },
   methods: {
     scrollDown() {
       const el = document.getElementById('configurator')
@@ -54,7 +55,10 @@ export default {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: #0a0a0a url('/golf-sim-hero.jpg') center / cover no-repeat;
+  background-color: #0a0a0a;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   padding-top: 112px; /* clear fixed navbar */
