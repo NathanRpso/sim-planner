@@ -1,0 +1,27 @@
+export default {
+  namespaced: true,
+  state: () => ({
+    initialized: false,
+    unit: 'metric',
+    launchMonitor: 'Uneekor QED',
+    displayType: 'projector',
+    computerType: 'desktop',
+    handedness: 'right',
+    cameraFocus: null,
+    showEnclosure: true,
+    openStep: 0,
+    showResults: false,
+  }),
+  mutations: {
+    setInitialized(state, val) { state.initialized = val },
+    setOpenStep(state, val) { state.openStep = val },
+    setShowEnclosure(state, val) { state.showEnclosure = val },
+    setShowResults(state, val) { state.showResults = val },
+    setUnit(state, val) { state.unit = val },
+    setLaunchMonitor(state, val) { state.launchMonitor = val },
+    setDisplayType(state, val) { state.displayType = val },
+    setComputerType(state, val) { state.computerType = val },
+    setHandedness(state, val) { state.handedness = val },
+    setCameraFocus(state, val) { state.cameraFocus = val },
+  },
+}
